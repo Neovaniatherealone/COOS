@@ -105,7 +105,8 @@ class Enemy:
             enemy.healthpoints -= damage_per_second
             print(f"The mage is burning and has taken {damage_per_second} damage points!")
             print(f"The mage has taken {total_damage} damage points from the burn effect.")
-
+    def __repr__(self):
+        return "The enemy has {hp} HP {mp} MP {Karma} Karma and {sp} staminapoints.".format(hp=self.healthpoints, mp=self.magickapoints, Karma=self.karma, sp=self.staminapoints)
 
 
 #below this line should be the objects
