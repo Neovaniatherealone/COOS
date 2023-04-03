@@ -134,3 +134,21 @@ print("\nYet despite the risks, you continue to use your magic to do good in the
 print("\nYour name has become known far and wide, spoken in hushed tones by those who fear your power, and whispered in reverence by those who recognize your greatness.")
 print("\nBut even as you stand at the height of your power, you know that there is much left to learn. The mysteries of the universe are endless, and there are always new spells to be discovered, new incantations to be spoken.")
 print("\nAnd so you continue on your journey, ever-seeking, ever-searching, ever-growing in strength and knowledge. For you are a mage, and your destiny is written in the stars.")
+
+input("\nPress a button")
+Player = mage(100,100,100,100)
+Hostile_Creature = enemy(50,25,10)
+print("\n Oh no! A hostile creature approaches you! What attack are you gonna use against it?")
+print("\n 1) Dagger-attack")
+print("\n 2) Fireball")
+choose_attack = input("\n Choose an option: ")
+
+#fix issue with interpreter going over if statement
+if choose_attack == 1:
+    print(Player.dagger_attack(Hostile_Creature))
+elif choose_attack == 2:
+    print(Player.fireball(Hostile_Creature))
+else:
+    ("That was not an valid option!")
+
+#add Enemy health screen at the end
