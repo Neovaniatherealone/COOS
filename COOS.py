@@ -6,14 +6,18 @@ print('''
     /  \    | (___   | |        | |     | |        /  \    | |__) | | |         /  \    |  \| |    /  \   
    / /\ \    \___ \  | |        | |     | |       / /\ \   |  _  /  | |        / /\ \   | . ` |   / /\ \  
   / ____ \   ____) | | |____   _| |_   _| |_     / ____ \  | | \ \  | |____   / ____ \  | |\  |  / ____ \ 
- /_/    \_\ |_____/   \_____| |_____| |_____|   /_/    \_\ |_|  \_\  \_____| /_/    \_\ |_| \_| /_/    \_\
+ /_/    \_\ |_____/   \_____| |_____| |_____|   /_/    \_\ |_|  \_\  \_____| /_/    \_\ |_| \_| /_/    \_\ 
                                                                                                           
                                                                                                           
 
 ''')
+print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 print("Ascii Arcana is a singleplayer-game that requires a mage defeating its enemies. Have fun!")
+print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+print("\n")
 
-class Mage:
+
+class mage:
     def __init__(self, healthpoints, magicka, karma, stamina):
         self.healthpoints = 100
         self.magickapoints = 100
@@ -63,7 +67,7 @@ class Mage:
     def __repr__(self):
         return "The mage has {hp} HP {mp} MP {Karma} Karma and {sp} staminapoints.".format(hp=self.healthpoints, mp=self.magickapoints, Karma=self.karma, sp=self.staminapoints)
 
-class Enemy:
+class enemy:
     def __init__(self, healthpoints, magicka, karma):
         self.healthpoints = 100
         self.magickapoints = 100
@@ -112,10 +116,21 @@ class Enemy:
         return "The enemy has {hp} HP {mp} MP {Karma} Karma and {sp} staminapoints.".format(hp=self.healthpoints, mp=self.magickapoints, Karma=self.karma, sp=self.staminapoints)
 
 
-#below this line should be the objects
+#below this line debug values
 
-mage = Mage(100,100,100,100)
-enemy = Enemy(100,100,10)
+#mage = Mage(100,100,100,100)
+#enemy = Enemy(100,100,10)
 
-print(mage.fireball(enemy))
-print(f"Enemy health: {enemy.healthpoints}")
+#print(mage.fireball(enemy))
+#print(f"Enemy health: {enemy.healthpoints}")
+
+#below this line objects and gameplay stuff
+
+name = input("What should your name be? ")
+print("\nHello, " + name + "!")
+print("\nYou are a mage, born with the gift of wielding magic beyond the limits of ordinary mortals. You have spent years honing your craft, mastering the arcane arts and delving deep into the mysteries of the universe. Your power is unparalleled, and your knowledge unmatched.")
+print("\nBut with great power comes great responsibility, and you know all too well the dangers that come with wielding such immense magical energies. The world is full of those who seek to use your powers for their own selfish gain, and you must remain ever-vigilant to protect yourself and those you love.")
+print("\nYet despite the risks, you continue to use your magic to do good in the world. You have traveled far and wide, vanquishing dark wizards and thwarting evil plots wherever you find them.")
+print("\nYour name has become known far and wide, spoken in hushed tones by those who fear your power, and whispered in reverence by those who recognize your greatness.")
+print("\nBut even as you stand at the height of your power, you know that there is much left to learn. The mysteries of the universe are endless, and there are always new spells to be discovered, new incantations to be spoken.")
+print("\nAnd so you continue on your journey, ever-seeking, ever-searching, ever-growing in strength and knowledge. For you are a mage, and your destiny is written in the stars.")
