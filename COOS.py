@@ -11,7 +11,7 @@ print('''
                                                                                                           
 
 ''')
-print("COOS is a singleplayer-game that requires a mage defeating its enemies. Have fun!")
+print("Ascii Arcana is a singleplayer-game that requires a mage defeating its enemies. Have fun!")
 
 class Mage:
     def __init__(self, healthpoints, magicka, karma, stamina):
