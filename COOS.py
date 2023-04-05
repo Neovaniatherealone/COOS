@@ -19,10 +19,10 @@ print("\n")
 
 class mage:
     def __init__(self, healthpoints, magicka, karma, stamina):
-        self.healthpoints = 100
-        self.magickapoints = 100
-        self.karma = 100
-        self.staminapoints = 100
+        self.healthpoints = healthpoints
+        self.magickapoints = magicka
+        self.karma = karma
+        self.staminapoints = stamina
 
     def dagger_attack(self, enemy):
         if self.staminapoints >= 20:
@@ -64,14 +64,15 @@ class mage:
             print(f"The enemy is burning and has taken {damage_per_second} damage points!")
             print(f"The enemy has taken {total_damage} damage points from the burn effect.")
     
-    def __repr__(self):
-        return "The mage has {hp} HP {mp} MP {Karma} Karma and {sp} staminapoints.".format(hp=self.healthpoints, mp=self.magickapoints, Karma=self.karma, sp=self.staminapoints)
+    #def __repr__(self):
+        #return "The mage has {hp} HP {mp} MP {Karma} Karma and {sp} staminapoints.".format(hp=self.healthpoints, mp=self.magickapoints, Karma=self.karma, sp=self.staminapoints)
 
 class enemy:
-    def __init__(self, healthpoints, magicka, karma):
-        self.healthpoints = 100
-        self.magickapoints = 100
-        self.karma = 100
+    def __init__(self, healthpoints, magicka, karma, stamina):
+        self.healthpoints = healthpoints
+        self.magickapoints = magicka
+        self.karma = karma
+        self.staminapoints = stamina
 
     def dagger_attack(self, mage):
         if self.staminapoints >= 20:
@@ -112,8 +113,8 @@ class enemy:
             enemy.healthpoints -= damage_per_second
             print(f"The mage is burning and has taken {damage_per_second} damage points!")
             print(f"The mage has taken {total_damage} damage points from the burn effect.")
-    def __repr__(self):
-        return "The enemy has {hp} HP {mp} MP {Karma} Karma and {sp} staminapoints.".format(hp=self.healthpoints, mp=self.magickapoints, Karma=self.karma, sp=self.staminapoints)
+    #def __repr__(self):
+        #return "The enemy has {hp} HP {mp} MP {Karma} Karma and {sp} staminapoints.".format(hp=self.healthpoints, mp=self.magickapoints, Karma=self.karma, sp=self.staminapoints)
 
 
 #below this line debug values
@@ -136,19 +137,36 @@ print("\nBut even as you stand at the height of your power, you know that there 
 print("\nAnd so you continue on your journey, ever-seeking, ever-searching, ever-growing in strength and knowledge. For you are a mage, and your destiny is written in the stars.")
 
 input("\nPress a button")
-Player = mage(100,100,100,100)
-Hostile_Creature = enemy(50,25,10)
 print("\n Oh no! A hostile creature approaches you! What attack are you gonna use against it?")
-print("\n 1) Dagger-attack")
-print("\n 2) Fireball")
-choose_attack = input("\n Choose an option: ")
+# create a mage and an enemy
+my_mage = mage(100, 100, 100, 100)
+my_enemy = enemy(100, 100, 100, 100)
 
-#fix issue with interpreter going over if statement
-if choose_attack == 1:
-    print(Player.dagger_attack(Hostile_Creature))
-elif choose_attack == 2:
-    print(Player.fireball(Hostile_Creature))
+# loop until either the mage or enemy dies
+while my_mage.healthpoints > 0 and my_enemy.healthpoints > 0:
+    # print the status of the mage and enemy
+    print(my_mage)
+    print(my_enemy)
+
+    # ask the user what action they want to take
+    action = input("What action do you want to take? (dagger_attack, fireball, burn): ")
+
+    # perform the appropriate action
+    if action == "dagger_attack":
+        my_mage.dagger_attack(my_enemy)
+    elif action == "fireball":
+        my_mage.fireball(my_enemy)
+    elif action == "burn":
+        my_mage.burn(my_enemy)
+    else:
+        print("Invalid action.")
+
+    # check if the enemy is still alive and attack the mage
+    if my_enemy.healthpoints > 0:
+        my_enemy.dagger_attack(my_mage)
+
+# print the winner
+if my_mage.healthpoints > 0:
+    print("You win!")
 else:
-    ("That was not an valid option!")
-
-#add Enemy health screen at the end
+    print("You lose.")
