@@ -50,7 +50,7 @@ class mage:
                 self.magickapoints -= 25
                 print("The fireball misses its target!")
         else:
-            print("Not enough magicka for this attack. You have {magicka} left.".format(magicka=self.magicka))
+            print("Not enough magicka for this attack. You have {magicka} left.".format(magicka=self.magickapoints))
 
     def burn(self, enemy):
         total_damage = 0
