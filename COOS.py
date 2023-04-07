@@ -24,25 +24,32 @@ class mage:
         self.karma = karma
         self.staminapoints = stamina
 
+    def regenerate_stamina(self, amount):
+        self.staminapoints += amount
+
+    def regenerate_magicka(self, amount):
+        self.magickapoints += amount
+
     def dagger_attack(self, enemy):
         if self.staminapoints >= 20:
-            hit_chance = random.randint(1, 20)  # roll a 20-sided die for hit chance
-            if hit_chance >= 10:  # attack hits if the roll is 10 or greater
-                damage = random.randint(10, 15)  # roll another die for damage
+            hit_chance = random.randint(1, 20)
+            if hit_chance >= 10:
+                damage = random.randint(10, 15)
                 enemy.healthpoints -= damage
                 self.staminapoints -= 20
                 print("The enemy has been hit by the dagger attack for {damage} damage!".format(damage=damage))
             else:
-                self.staminapoints -= 10  # reduce stamina cost if the attack misses
+                self.staminapoints -= 10
                 print("The dagger attack missed!")
         else:
             print("Not enough stamina to perform the dagger attack.")
-    
+            self.regenerate_stamina(5)  # Regenerate 5 stamina points every second
+
     def fireball(self, enemy):
         if self.magickapoints >= 50:
             hit_chance = random.randint(1, 20)
             if hit_chance >= 12:
-                damage = random.randint(30,50)
+                damage = random.randint(30, 50)
                 enemy.healthpoints -= damage
                 self.magickapoints -= 50
                 print("The enemy has been hit by the fireball attack for {damage} damage!".format(damage=damage))
@@ -51,6 +58,7 @@ class mage:
                 print("The fireball misses its target!")
         else:
             print("Not enough magicka for this attack. You have {magicka} left.".format(magicka=self.magickapoints))
+            self.regenerate_magicka(10)  # Regenerate 10 magicka points every 2 seconds
 
     def burn(self, enemy):
         total_damage = 0
